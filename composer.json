@@ -1,9 +1,9 @@
 {
-    "name": "hatframework/resources/grid",
+    "name": "hatframework/hat-resource-grid",
     "type": "library",
     "description": "",
     "keywords": [],
-    "homepage": "https://github.com/hat-framework/resources/grid",
+    "homepage": "https://github.com/hat-framework/hat-resource-grid",
     "license": "MIT",
     "authors": [
         {
