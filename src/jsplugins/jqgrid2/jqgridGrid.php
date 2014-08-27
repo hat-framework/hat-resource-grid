@@ -43,12 +43,19 @@ class jqgridGrid extends classes\Classes\Object{
         $this->formIntegration($model);
        
         $gridarr = array_values($gridarr);
-        ($this->node == "") ?
-           $this->grid->renderGrid("#$this->list","#$this->pager" ,true, $this->summaryrows, $gridarr, true, true):
-           $this->grid->renderTree("#$this->list", "#$this->pager",true, $this->summaryrows, $gridarr, true, true);
         
         
-        $this->LoadResource('html','html')->LoadJqueryFunction("$('.jqgrid-overlay').hide();");
+        $content = ($this->node == "") ?
+               $this->grid->renderGrid("#$this->list","#$this->pager" ,true, $this->summaryrows, $gridarr, true, true, false):
+               $this->grid->renderTree("#$this->list", "#$this->pager",true, $this->summaryrows, $gridarr, true, true, false);
+        
+        if(is_object($content)){die(json_encode($content));}
+        $e = explode("<script type='text/javascript'>", $content);
+        echo array_shift($e);
+        $js = explode("</script>", $e[0]);
+        
+        $this->LoadResource('html','html')->LoadJsFunction($js[0]);
+        $this->html->LoadJqueryFunction("$('.jqgrid-overlay').hide();");
     }
     
     public function addSumary($arr){

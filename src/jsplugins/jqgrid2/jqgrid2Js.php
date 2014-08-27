@@ -42,7 +42,7 @@ class jqgrid2Js extends JsPlugin implements grid {
 
         $url = "$this->url/files";
 
-        $this->Html->LoadJs("$url/js/ui.multiselect");
+        //$this->Html->LoadJs("$url/js/ui.multiselect");
         $this->Html->LoadJs("$url/js/i18n/grid.locale-pt-br");
         $this->Html->LoadJs("$url/js/jquery.jqGrid.min");
         
@@ -50,11 +50,11 @@ class jqgrid2Js extends JsPlugin implements grid {
         $this->Html->loadCss("plugins/jqueryui/multiselect");
         $this->LoadJsPlugin("jqueryui/jqueryui", "jqui");
 
-        echo "<script type='text/javascript'>
-                $.jgrid.no_legacy_api = true;
-                $.jgrid.useJSON = true;
-                var lastSelection;
-              </script>";
+        $this->Html->LoadJsFunction("
+            $.jgrid.no_legacy_api = true;
+            $.jgrid.useJSON = true;
+            var lastSelection;
+        ");
     }
     
 }
